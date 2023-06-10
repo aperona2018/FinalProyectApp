@@ -22,8 +22,15 @@
     <string name="email">Email</string>
     <string name="number">Phone Number</string>
     <string name="signin">Sign In!</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <!-- Home -->
+    <string name="chores">Chores list</string>
+    <string name="achievements">Achievements</string>
+    <string name="images">Images</string>
+    <string name="dates">Dates</string>
+    <string name="write">Write Notes</string>
+    <string name="rating">Ratings</string>
 
 
     <!-- Main -->

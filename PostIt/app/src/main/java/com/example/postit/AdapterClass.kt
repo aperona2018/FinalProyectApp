@@ -10,6 +10,9 @@ import androidx.recyclerview.widget.RecyclerView
 
 class AdapterClass(private val dataList : ArrayList<DataClass>): RecyclerView.Adapter<AdapterClass.ViewHolderClass>() {
 
+    var onItemClick: ((DataClass) -> Unit)? = null
+
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderClass {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_layout, parent, false)
         return ViewHolderClass(itemView)
@@ -23,6 +26,10 @@ class AdapterClass(private val dataList : ArrayList<DataClass>): RecyclerView.Ad
         val currentItem = dataList[position]
         holder.rvImage.setImageResource(currentItem.dataImage)
         holder.rvTitle.text = currentItem.dataTitle
+
+        holder.itemView.setOnClickListener {
+            onItemClick?.invoke(currentItem)
+        }
     }
 
     class ViewHolderClass(itemView: View): RecyclerView.ViewHolder(itemView) {

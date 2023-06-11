@@ -92,6 +92,8 @@ class HomeFragment : Fragment() {
             when(it.dataTitle){
                 getString(R.string.chores) -> {
                     Toast.makeText(activity, "Pulsado chores", Toast.LENGTH_SHORT).show()
+                    val choresIntent = Intent(activity, ChoresActivity::class.java)
+                    activity?.startActivity(choresIntent)
                 }
                 getString(R.string.achievements) -> {
                     Toast.makeText(activity, "Pulsado achievements", Toast.LENGTH_SHORT).show()

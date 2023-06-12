@@ -8,13 +8,9 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import com.google.firebase.database.FirebaseDatabase
 
 class LoginFragment : Fragment() {
-
-    lateinit var username : EditText
-    lateinit var password : EditText
-
-
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
@@ -24,11 +20,15 @@ class LoginFragment : Fragment() {
         val loginButton = view.findViewById<Button>(R.id.loginButton)
         val registerButton = view.findViewById<Button>(R.id.registerButton)
 
-        username = view.findViewById(R.id.username)
-        password = view.findViewById(R.id.password)
+        val username = view.findViewById<EditText>(R.id.username).text.toString()
+        val password = view.findViewById<EditText>(R.id.password).text.toString()
 
         loginButton.setOnClickListener {
-            Toast.makeText(activity, "Login", Toast.LENGTH_SHORT).show()
+            if (username.isNotEmpty() && password.isNotEmpty()){
+                val dbRef = FirebaseDatabase.getInstance("https://postit-48c08-default-rtdb.europe-west1.firebasedatabase.app").getReference("Users")
+
+
+            }
         }
 
 

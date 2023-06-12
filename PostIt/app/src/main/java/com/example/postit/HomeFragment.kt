@@ -109,6 +109,8 @@ class HomeFragment : Fragment() {
                 }
                 getString(R.string.rating) -> {
                     Toast.makeText(activity, "Pulsado ratings", Toast.LENGTH_SHORT).show()
+                    val ratingsIntent = Intent(activity, RatingActivity::class.java)
+                    activity?.startActivity(ratingsIntent)
                 }
             }
         }

@@ -2,16 +2,16 @@ package com.example.postit
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.setFragmentResultListener
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import java.util.*
-import kotlin.collections.ArrayList
 
 class HomeFragment : Fragment() {
 
@@ -22,13 +22,22 @@ class HomeFragment : Fragment() {
     private lateinit var myAdapter : AdapterClass
     private lateinit var searchView: SearchView
     private lateinit var searchList: ArrayList<DataClass>
-
+    private var username : String? = null
+    private var password : String? = null
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        setFragmentResultListener("userinfo"){ key, bundle ->
+            username = bundle.getString("username")
+            password = bundle.getString("password")
+        }
+
+        println("username: " + username)
+        println("password: " + password)
 
         val view = inflater.inflate(R.layout.fragment_home, container, false)
 

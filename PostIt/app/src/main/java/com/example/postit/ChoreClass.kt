@@ -13,4 +13,6 @@ class ChoreClass {
         this.choreImage = choreImage
     }
 
+    constructor()
+
 }

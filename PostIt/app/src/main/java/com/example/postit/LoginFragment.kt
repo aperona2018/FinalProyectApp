@@ -1,13 +1,13 @@
 package com.example.postit
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import com.google.firebase.database.FirebaseDatabase
 
 class LoginFragment : Fragment() {
@@ -20,17 +20,36 @@ class LoginFragment : Fragment() {
         val loginButton = view.findViewById<Button>(R.id.loginButton)
         val registerButton = view.findViewById<Button>(R.id.registerButton)
 
-        val username = view.findViewById<EditText>(R.id.username).text.toString()
-        val password = view.findViewById<EditText>(R.id.password).text.toString()
-
         loginButton.setOnClickListener {
-            if (username.isNotEmpty() && password.isNotEmpty()){
+            val username = view.findViewById<EditText>(R.id.username).text.toString()
+            val password = view.findViewById<EditText>(R.id.password).text.toString()
+
+            if ((username.isNotEmpty()) && (password.isNotEmpty())){
                 val dbRef = FirebaseDatabase.getInstance("https://postit-48c08-default-rtdb.europe-west1.firebasedatabase.app").getReference("Users")
 
-
+                dbRef.get().addOnCompleteListener{
+                    if (it.isSuccessful) {
+                        val result = it.result.children.mapNotNull { doc ->
+                            doc.getValue(UserClass::class.java)
+                        }
+                        for (user in result){
+                            if ((user.userName == username) && (user.userPassword == password)){
+                                val bundle = Bundle()
+                                bundle.putString("username", username)
+                                bundle.putString("password", password)
+                                activity?.supportFragmentManager?.setFragmentResult("userinfo", bundle)
+                                Toast.makeText(activity, "Logged", Toast.LENGTH_SHORT).show()
+                                activity?.supportFragmentManager?.beginTransaction()?.apply{
+                                    replace(R.id.fragment_container, HomeFragment())
+                                    addToBackStack(null)
+                                    commit()
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
-
 
         registerButton.setOnClickListener {
             activity?.supportFragmentManager?.beginTransaction()?.apply{

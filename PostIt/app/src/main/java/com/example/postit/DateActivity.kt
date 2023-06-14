@@ -57,6 +57,7 @@ class DateActivity : AppCompatActivity() {
             override fun onCancelled(error: DatabaseError) {
                 dialog.dismiss()
             }
+
         })
 
 

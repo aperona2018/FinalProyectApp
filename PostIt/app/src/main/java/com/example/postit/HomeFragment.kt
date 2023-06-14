@@ -8,9 +8,10 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.setFragmentResultListener
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.lifecycle.Observer
 import java.util.*
 
 class HomeFragment : Fragment() {
@@ -24,27 +25,18 @@ class HomeFragment : Fragment() {
     private lateinit var searchList: ArrayList<DataClass>
     private var username : String? = null
     private var password : String? = null
-
+    lateinit var user : UserClass
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
-        setFragmentResultListener("userinfo"){ key, bundle ->
-            username = bundle.getString("username")
-            password = bundle.getString("password")
-        }
-
-        println("username: " + username)
-        println("password: " + password)
-
         val view = inflater.inflate(R.layout.fragment_home, container, false)
 
         imageList = arrayOf(
             R.drawable.ic_list,
             R.drawable.ic_checkbox,
-            R.drawable.ic_image,
             R.drawable.ic_date,
             R.drawable.ic_text,
             R.drawable.ic_rating
@@ -53,7 +45,6 @@ class HomeFragment : Fragment() {
         titleList = arrayOf(
             getString(R.string.chores),
             getString(R.string.achievements),
-            getString(R.string.images),
             getString(R.string.dates),
             getString(R.string.write),
             getString(R.string.rating)
@@ -112,6 +103,8 @@ class HomeFragment : Fragment() {
                 }
                 getString(R.string.dates) -> {
                     Toast.makeText(activity, "Pulsado dates", Toast.LENGTH_SHORT).show()
+                    val dateIntent = Intent(activity, DateActivity::class.java)
+                    activity?.startActivity(dateIntent)
                 }
                 getString(R.string.write) -> {
                     Toast.makeText(activity, "Pulsado write", Toast.LENGTH_SHORT).show()

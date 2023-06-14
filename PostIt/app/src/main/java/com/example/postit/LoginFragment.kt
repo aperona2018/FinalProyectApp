@@ -8,12 +8,15 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.database.FirebaseDatabase
 
 class LoginFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
+
 
         val view : View = inflater.inflate(R.layout.fragment_login, container, false)
 
@@ -34,10 +37,6 @@ class LoginFragment : Fragment() {
                         }
                         for (user in result){
                             if ((user.userName == username) && (user.userPassword == password)){
-                                val bundle = Bundle()
-                                bundle.putString("username", username)
-                                bundle.putString("password", password)
-                                activity?.supportFragmentManager?.setFragmentResult("userinfo", bundle)
                                 Toast.makeText(activity, "Logged", Toast.LENGTH_SHORT).show()
                                 activity?.supportFragmentManager?.beginTransaction()?.apply{
                                     replace(R.id.fragment_container, HomeFragment())

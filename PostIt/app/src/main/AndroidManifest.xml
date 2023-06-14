@@ -15,6 +15,12 @@
         android:theme="@style/Theme.PostIt"
         tools:targetApi="31">
         <activity
+            android:name=".UploadDateActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DateActivity"
+            android:exported="false" />
+        <activity
             android:name=".RatingActivity"
             android:exported="false" />
         <activity

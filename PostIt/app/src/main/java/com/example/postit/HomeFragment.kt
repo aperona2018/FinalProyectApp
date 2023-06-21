@@ -5,13 +5,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.lifecycle.Observer
+import com.google.android.material.navigation.NavigationView
 import java.util.*
 
 class HomeFragment : Fragment() {
@@ -24,8 +27,8 @@ class HomeFragment : Fragment() {
     private lateinit var searchView: SearchView
     private lateinit var searchList: ArrayList<DataClass>
     private var username : String? = null
-    private var password : String? = null
-    lateinit var user : UserClass
+
+    private val userViewModel : UserViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,7 +39,6 @@ class HomeFragment : Fragment() {
 
         imageList = arrayOf(
             R.drawable.ic_list,
-            R.drawable.ic_checkbox,
             R.drawable.ic_date,
             R.drawable.ic_text,
             R.drawable.ic_rating
@@ -44,7 +46,6 @@ class HomeFragment : Fragment() {
 
         titleList = arrayOf(
             getString(R.string.chores),
-            getString(R.string.achievements),
             getString(R.string.dates),
             getString(R.string.write),
             getString(R.string.rating)
@@ -58,6 +59,14 @@ class HomeFragment : Fragment() {
         dataList = arrayListOf<DataClass>()
         searchList = arrayListOf<DataClass>()
         getData()
+
+        username = userViewModel.getUsername()
+        val navigationView = activity?.findViewById<NavigationView>(R.id.nav_view)
+        val header = navigationView?.getHeaderView(0)
+        var headerUsername = header?.findViewById<TextView>(R.id.header_user)
+        if (headerUsername != null) {
+            headerUsername.text = userViewModel.getUsername()
+        }
 
         searchView.clearFocus()
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
@@ -91,27 +100,23 @@ class HomeFragment : Fragment() {
         myAdapter.onItemClick = {
             when(it.dataTitle){
                 getString(R.string.chores) -> {
-                    Toast.makeText(activity, "Pulsado chores", Toast.LENGTH_SHORT).show()
                     val choresIntent = Intent(activity, ChoresActivity::class.java)
+                    choresIntent.putExtra("username", userViewModel.getUsername())
                     activity?.startActivity(choresIntent)
                 }
-                getString(R.string.achievements) -> {
-                    Toast.makeText(activity, "Pulsado achievements", Toast.LENGTH_SHORT).show()
-                }
-                getString(R.string.images) -> {
-                    Toast.makeText(activity, "Pulsado images", Toast.LENGTH_SHORT).show()
-                }
                 getString(R.string.dates) -> {
-                    Toast.makeText(activity, "Pulsado dates", Toast.LENGTH_SHORT).show()
                     val dateIntent = Intent(activity, DateActivity::class.java)
+                    dateIntent.putExtra("username", userViewModel.getUsername())
                     activity?.startActivity(dateIntent)
                 }
                 getString(R.string.write) -> {
-                    Toast.makeText(activity, "Pulsado write", Toast.LENGTH_SHORT).show()
+                    val notesIntent = Intent(activity, NotesActivity::class.java)
+                    notesIntent.putExtra("username", userViewModel.getUsername())
+                    activity?.startActivity(notesIntent)
                 }
                 getString(R.string.rating) -> {
-                    Toast.makeText(activity, "Pulsado ratings", Toast.LENGTH_SHORT).show()
                     val ratingsIntent = Intent(activity, RatingActivity::class.java)
+                    ratingsIntent.putExtra("username", userViewModel.getUsername())
                     activity?.startActivity(ratingsIntent)
                 }
             }

@@ -1,14 +1,19 @@
 package com.example.postit
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class UserViewModel: ViewModel() {
+class UserViewModel : ViewModel() {
 
-    var user : UserClass? = null
+    private var _username = MutableLiveData(String())
+    val username : LiveData<String> get() = _username
 
-    fun addUser(user : UserClass){
-        this.user = user
+    fun setUsername(username : String){
+        this._username.value = username
     }
 
-
+    fun getUsername(): String? {
+        return this.username.value
+    }
 }

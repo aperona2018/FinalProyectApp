@@ -3,7 +3,6 @@ package com.example.postit
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.cardview.widget.CardView
@@ -25,10 +24,11 @@ class DateAdapter(private val context: android.content.Context, private var date
     override fun onBindViewHolder(holder: DateViewHolder, position: Int) {
         holder.recDateTitle.text = dateList[position].dateTitle
         holder.recDateText.text = dateList[position].dateText
+        val creator : String = dateList[position].creator.toString()
         holder.recDelete.setOnClickListener {
             val title : String? = dateList[position].dateTitle
             if (title != null) {
-                FirebaseDatabase.getInstance("https://postit-48c08-default-rtdb.europe-west1.firebasedatabase.app").getReference("Dates")
+                FirebaseDatabase.getInstance("https://postit-48c08-default-rtdb.europe-west1.firebasedatabase.app").getReference("Dates").child(creator)
                     .child(title).removeValue().addOnSuccessListener {
                         Toast.makeText(context, "Date deleted", Toast.LENGTH_SHORT).show()
                     }

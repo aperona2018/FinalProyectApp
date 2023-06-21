@@ -4,54 +4,51 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
-import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.postit.databinding.ActivityChoresBinding
+import com.example.postit.databinding.ActivityNotesBinding
 import com.google.firebase.database.*
 
-class ChoresActivity : AppCompatActivity() {
+class NotesActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityChoresBinding
-    private lateinit var choreList: ArrayList<ChoreClass>
-    private lateinit var adapter: ChoreAdapter
+    private lateinit var binding: ActivityNotesBinding
+    private lateinit var noteList: ArrayList<NoteClass>
+    private lateinit var adapter: NoteAdapter
     var databaseReference: DatabaseReference? = null
     var eventListener: ValueEventListener? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
-        binding = ActivityChoresBinding.inflate(layoutInflater)
+
+        binding = ActivityNotesBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val bundle : Bundle? = this.intent.extras
         val username : String? = bundle?.getString("username")
 
-        val gridLayoutManager = GridLayoutManager(this@ChoresActivity, 1)
-        binding.recyclerViewChores.layoutManager = gridLayoutManager
+        val gridLayoutManager = GridLayoutManager(this@NotesActivity, 1)
+        binding.recyclerViewNotes.layoutManager = gridLayoutManager
 
-        val builder = AlertDialog.Builder(this@ChoresActivity)
+        val builder = AlertDialog.Builder(this@NotesActivity)
         builder.setCancelable(false)
         builder.setView(R.layout.progress_layout)
         val dialog = builder.create()
         dialog.show()
 
-        choreList = ArrayList()
-        adapter = ChoreAdapter(this@ChoresActivity, choreList)
-        binding.recyclerViewChores.adapter = adapter
-
-        databaseReference = FirebaseDatabase.getInstance("https://postit-48c08-default-rtdb.europe-west1.firebasedatabase.app").getReference("Chores").child(username.toString())
+        noteList = ArrayList()
+        adapter = NoteAdapter(this@NotesActivity, noteList)
+        binding.recyclerViewNotes.adapter = adapter
+        databaseReference = FirebaseDatabase.getInstance("https://postit-48c08-default-rtdb.europe-west1.firebasedatabase.app").getReference("Notes").child(username.toString())
         dialog.show()
 
-        eventListener = databaseReference!!.addValueEventListener(object: ValueEventListener{
+        eventListener = databaseReference!!.addValueEventListener(object: ValueEventListener {
 
             override fun onDataChange(snapshot: DataSnapshot) {
-                choreList.clear()
+                noteList.clear()
                 for (itemSnapshot in snapshot.children){
-                    val choreClass = itemSnapshot.getValue(ChoreClass::class.java)
-                    if (choreClass != null){
-                        choreList.add(choreClass)
+                    val noteClass = itemSnapshot.getValue(NoteClass::class.java)
+                    if (noteClass != null){
+                        noteList.add(noteClass)
                     }
                 }
                 adapter.notifyDataSetChanged()
@@ -63,10 +60,9 @@ class ChoresActivity : AppCompatActivity() {
             }
         })
 
-        binding.fab.setOnClickListener {
-
+        binding.fabNotes.setOnClickListener {
             if (username != "") {
-                val intent = Intent(this, UploadActivity::class.java)
+                val intent = Intent(this, UploadNoteActivity::class.java)
                 intent.putExtra("username", username)
                 startActivity(intent)
             } else{

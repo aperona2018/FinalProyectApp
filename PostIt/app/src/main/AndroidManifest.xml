@@ -15,6 +15,15 @@
         android:theme="@style/Theme.PostIt"
         tools:targetApi="31">
         <activity
+            android:name=".ChangeNoteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UploadNoteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".NotesActivity"
+            android:exported="false" />
+        <activity
             android:name=".UploadDateActivity"
             android:exported="false" />
         <activity

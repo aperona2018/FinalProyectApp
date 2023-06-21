@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 
 class ChoreAdapter(private val context: android.content.Context, private var choreList: List<ChoreClass>): RecyclerView.Adapter<ChoreViewHolder>() {
 

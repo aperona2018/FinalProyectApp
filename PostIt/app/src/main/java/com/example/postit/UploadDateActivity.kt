@@ -14,12 +14,16 @@ import java.util.*
 class UploadDateActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityUploadDateBinding
+    private var username : String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityUploadDateBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val bundle : Bundle? = this.intent.extras
+        username = bundle?.getString("username")
 
         binding.uploadDateImage.setOnClickListener {
             val calendarBox = Calendar.getInstance()
@@ -36,7 +40,7 @@ class UploadDateActivity : AppCompatActivity() {
         }
 
         binding.saveButton.setOnClickListener {
-            saveData()
+                saveData()
         }
 
     }
@@ -51,7 +55,7 @@ class UploadDateActivity : AppCompatActivity() {
         val dateTitle = binding.dateTitle.text.toString()
         val date = binding.textDate.text.toString()
 
-        val dateClass = DateClass(dateTitle, date)
+        val dateClass = DateClass(dateTitle, date, username)
 
         val builder = AlertDialog.Builder(this@UploadDateActivity)
         builder.setCancelable(false)
@@ -59,7 +63,7 @@ class UploadDateActivity : AppCompatActivity() {
         val dialog = builder.create()
         dialog.show()
 
-        FirebaseDatabase.getInstance("https://postit-48c08-default-rtdb.europe-west1.firebasedatabase.app").getReference("Dates").child(dateTitle)
+        FirebaseDatabase.getInstance("https://postit-48c08-default-rtdb.europe-west1.firebasedatabase.app").getReference("Dates").child(username.toString()).child(dateTitle)
             .setValue(dateClass).addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     Toast.makeText(this@UploadDateActivity, "Saved", Toast.LENGTH_SHORT).show()

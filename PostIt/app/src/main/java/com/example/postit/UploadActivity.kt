@@ -22,11 +22,16 @@ class UploadActivity : AppCompatActivity() {
     private lateinit var binding: ActivityUploadBinding
     var imageUrl : String? = null
     var uri: Uri? = null
+    private var username : String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityUploadBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
+        val bundle : Bundle? = this.intent.extras
+        username = bundle?.getString("username")
 
         val activityResultLauncher = registerForActivityResult<Intent, ActivityResult>(
             ActivityResultContracts.StartActivityForResult()) { result ->
@@ -86,16 +91,22 @@ class UploadActivity : AppCompatActivity() {
         val dialog = builder.create()
         dialog.show()
 
-        FirebaseDatabase.getInstance("https://postit-48c08-default-rtdb.europe-west1.firebasedatabase.app").getReference("Chores").child(title)
-            .setValue(choreClass).addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    Toast.makeText(this@UploadActivity, "Saved", Toast.LENGTH_SHORT).show()
-                    finish()
+        if (username != null) {
+            FirebaseDatabase.getInstance("https://postit-48c08-default-rtdb.europe-west1.firebasedatabase.app")
+                .getReference("Chores").child(username.toString()).child(title)
+                .setValue(choreClass).addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        Toast.makeText(this@UploadActivity, "Saved", Toast.LENGTH_SHORT).show()
+                        finish()
+                    }
+                }.addOnFailureListener { e ->
+                    Toast.makeText(
+                        this@UploadActivity, e.message.toString(), Toast.LENGTH_SHORT
+                    ).show()
                 }
-            }.addOnFailureListener { e ->
-                Toast.makeText(
-                    this@UploadActivity, e.message.toString(), Toast.LENGTH_SHORT).show()
-            }
+        } else{
+            Toast.makeText(this@UploadActivity, "Need to login to add chores", Toast.LENGTH_SHORT).show()
+        }
     }
 
 }

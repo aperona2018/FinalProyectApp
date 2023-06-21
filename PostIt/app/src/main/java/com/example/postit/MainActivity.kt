@@ -3,10 +3,13 @@ package com.example.postit
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.navigation.NavigationView
 
@@ -14,6 +17,8 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 
 
     private lateinit var drawerLayout : DrawerLayout
+    private val mainUserViewModel : UserViewModel by viewModels()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,6 +32,7 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 
         val navigationView = findViewById<NavigationView>(R.id.nav_view)
         navigationView.setNavigationItemSelectedListener(this)
+
 
 
         val toggle = ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open_nav, R.string.close_nav)
@@ -43,10 +49,10 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
             R.id.nav_home -> supportFragmentManager.beginTransaction().apply{
-                replace(R.id.fragment_container, HomeFragment())
-                addToBackStack(null)
-                commit()
-            }
+                    replace(R.id.fragment_container, HomeFragment())
+                    addToBackStack(null)
+                    commit()
+                }
             R.id.nav_about -> supportFragmentManager.beginTransaction().apply{
                 replace(R.id.fragment_container, AboutFragment())
                 addToBackStack(null)

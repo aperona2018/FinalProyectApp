@@ -51,7 +51,7 @@
                 android:layout_marginTop="20dp"
                 android:background="@drawable/border"
                 android:gravity="start|center_vertical"
-                android:hint="Change note content"
+                android:hint="@string/change_note"
                 android:padding="16dp"
                 android:textColor="@color/lavender" />
 
@@ -60,7 +60,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginTop="20dp"
-                android:text="Save changes"
+                android:text="@string/save_changes"
                 android:textSize="18sp"
                 app:cornerRadius="20dp" />
 

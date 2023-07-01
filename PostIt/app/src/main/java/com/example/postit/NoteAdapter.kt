@@ -33,13 +33,12 @@ class NoteAdapter(private val context: android.content.Context, private var note
             if (title != null) {
                 FirebaseDatabase.getInstance("https://postit-48c08-default-rtdb.europe-west1.firebasedatabase.app").getReference("Notes").child(username.toString())
                     .child(title).removeValue().addOnSuccessListener {
-                        Toast.makeText(context, "Note deleted", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, R.string.toast_note_deleted, Toast.LENGTH_SHORT).show()
                     }
             }
         }
 
         holder.recChange.setOnClickListener {
-            Toast.makeText(context, "Change pressed", Toast.LENGTH_SHORT).show()
             val changeIntent = Intent(this.context, ChangeNoteActivity::class.java)
             changeIntent.putExtra("title", holder.recNoteTitle.text)
             changeIntent.putExtra("username", username)

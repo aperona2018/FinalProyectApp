@@ -34,13 +34,13 @@ class ChangeNoteActivity : AppCompatActivity() {
 
 
         binding.saveChangeNoteButton.setOnClickListener {
-            Toast.makeText(this, "Changes saved", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, R.string.toast_changes_saved, Toast.LENGTH_SHORT).show()
             val content : String? = binding.noteContentChange.text.toString()
             val noteClass = NoteClass(title, content)
             FirebaseDatabase.getInstance("https://postit-48c08-default-rtdb.europe-west1.firebasedatabase.app").getReference("Notes").child(username).child(title)
                 .setValue(noteClass).addOnCompleteListener { task ->
                     if (task.isSuccessful) {
-                        Toast.makeText(this@ChangeNoteActivity, "Saved", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@ChangeNoteActivity, R.string.toast_saved, Toast.LENGTH_SHORT).show()
                         finish()
                     }
                 }.addOnFailureListener { e ->

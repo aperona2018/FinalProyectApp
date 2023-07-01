@@ -51,10 +51,10 @@ class RatingActivity : AppCompatActivity() {
                         }
 
                 } else {
-                    Toast.makeText(this, "Rating bar must be filled", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, R.string.toast_rating_bar, Toast.LENGTH_SHORT).show()
                 }
             }else{
-                Toast.makeText(this, "Must login", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, R.string.toast_must_login, Toast.LENGTH_SHORT).show()
             }
         }
     }

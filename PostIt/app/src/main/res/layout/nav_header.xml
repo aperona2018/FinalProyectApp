@@ -23,13 +23,4 @@
         android:textColor="@color/white"
         android:textStyle="bold"/>
 
-    <TextView
-        android:id="@+id/header_email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="user email"
-        android:textColor="@color/white"
-        android:textSize="14sp"
-        android:layout_marginBottom="16dp"/>
-
 </LinearLayout>

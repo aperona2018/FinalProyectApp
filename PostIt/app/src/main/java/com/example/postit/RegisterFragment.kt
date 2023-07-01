@@ -34,13 +34,12 @@ class RegisterFragment : Fragment() {
             password = view.findViewById<EditText>(R.id.register_password).text.toString()
 
             if (username.isNotEmpty() && email.isNotEmpty() && number.isNotEmpty() && password.isNotEmpty()){
-                Toast.makeText(activity, "Registered", Toast.LENGTH_SHORT).show()
                 val userClass = UserClass(username, email, number, password)
 
                 FirebaseDatabase.getInstance("https://postit-48c08-default-rtdb.europe-west1.firebasedatabase.app").getReference("Users").child(username)
                     .setValue(userClass).addOnCompleteListener { task ->
                         if (task.isSuccessful) {
-                            Toast.makeText(activity, "User registered", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(activity, R.string.toast_registered, Toast.LENGTH_SHORT).show()
                             activity?.supportFragmentManager?.beginTransaction()?.apply{
                                 replace(R.id.fragment_container, HomeFragment())
                                 addToBackStack(null)
@@ -54,7 +53,7 @@ class RegisterFragment : Fragment() {
 
 
             } else{
-                Toast.makeText(activity, "All fields must be filled", Toast.LENGTH_SHORT).show()
+                Toast.makeText(activity, R.string.toast_fields_filled, Toast.LENGTH_SHORT).show()
             }
         }
 

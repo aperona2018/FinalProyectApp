@@ -51,31 +51,8 @@ class UploadActivity : AppCompatActivity() {
         }
 
         binding.saveButton.setOnClickListener {
-            saveData()
-        }
-    }
-
-    private fun saveData(){
-        /**
-        FirebaseApp.initializeApp(this)
-        val storageReference = FirebaseStorage.getInstance("https://postit-48c08-default-rtdb.europe-west1.firebasedatabase.app").reference.child("Chores Images")
-            .child(uri!!.lastPathSegment!!)
-        val builder = AlertDialog.Builder(this@UploadActivity)
-        builder.setCancelable(false)
-        builder.setView(R.layout.progress_layout)
-        val dialog = builder.create()
-        dialog.show()
-        storageReference.putFile(uri!!).addOnSuccessListener { taskSnapshot ->
-            val uriTask = taskSnapshot.storage.downloadUrl
-            while (!uriTask.isComplete);
-            val urlImage = uriTask.result
-            imageUrl = urlImage.toString()
             uploadData()
-            dialog.dismiss()
-        }.addOnFailureListener {
-            dialog.dismiss()
-        }**/
-        uploadData()
+        }
     }
 
     private fun uploadData(){
@@ -105,7 +82,7 @@ class UploadActivity : AppCompatActivity() {
                     ).show()
                 }
         } else{
-            Toast.makeText(this@UploadActivity, "Need to login to add chores", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this@UploadActivity, R.string.toast_need_login, Toast.LENGTH_SHORT).show()
         }
     }
 

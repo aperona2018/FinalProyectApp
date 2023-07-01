@@ -41,7 +41,7 @@
                 android:layout_marginTop="20dp"
                 android:background="@drawable/border"
                 android:gravity="start|center_vertical"
-                android:hint="Enter date name"
+                android:hint="@string/date_name"
                 android:maxLines="1"
                 android:padding="16dp"
                 android:textColor="@color/lavender" />
@@ -52,7 +52,7 @@
                 android:layout_marginTop="20dp"
                 android:background="@drawable/border"
                 android:gravity="start|center_vertical"
-                android:text="dd/mm/yyyy"
+                android:text="@string/date_format"
                 android:id="@+id/textDate"
                 android:textSize="18sp"
                 android:padding="16dp"/>
@@ -62,7 +62,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginTop="20dp"
-                android:text="Save"
+                android:text="@string/save"
                 android:textSize="18sp"
                 app:cornerRadius="20dp" />
 

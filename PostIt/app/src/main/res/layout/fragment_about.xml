@@ -1,14 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AboutFragment">
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@color/lavender"
+    tools:context=".MainActivity"
+    android:id="@+id/main_fragment_container">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="About fragment" />
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        app:cardElevation="20dp">
 
-</FrameLayout>
+        <TextView
+            android:drawableLeft="@drawable/baseline_person_24"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/students_name"
+            android:id="@+id/students_name"/>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp">
+
+        <TextView
+            android:drawableLeft="@drawable/baseline_backpack_24"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/students_career"
+            android:id="@+id/students_career"/>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp">
+
+        <TextView
+            android:drawableLeft="@drawable/baseline_code_24"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/students_github"
+            android:id="@+id/students_github"/>
+    </androidx.cardview.widget.CardView>
+
+
+</LinearLayout>

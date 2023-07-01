@@ -70,7 +70,7 @@ class ChoresActivity : AppCompatActivity() {
                 intent.putExtra("username", username)
                 startActivity(intent)
             } else{
-                Toast.makeText(this, "Must login", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, R.string.toast_must_login, Toast.LENGTH_SHORT).show()
             }
         }
     }

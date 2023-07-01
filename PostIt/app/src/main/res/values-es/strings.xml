@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PostIt</string>
+
+    <string name="open_nav">Abrir Navigation Drawer</string>
+    <string name="close_nav">Cerrar Navigation Drawer</string>
+
+    <!-- Menu -->
+
+    <string name="home">Principal</string>
+    <string name="about">Sobre nosotros</string>
+    <string name="exit">Salir</string>
+
+    <!-- Login -->
+
+    <string name="login">Logearse</string>
+    <string name="username">Usuario</string>
+    <string name="password">Contraseña</string>
+    <string name="register">Registrarse</string>
+
+    <!-- Register -->
+
+    <string name="email">Email</string>
+    <string name="number">Número telefónico</string>
+    <string name="signin">Registrarse</string>
+
+
+    <!-- Home -->
+    <string name="chores">Lista de tareas</string>
+    <string name="images">Imágenes</string>
+    <string name="dates">Fechas</string>
+    <string name="write">Escribir notas</string>
+    <string name="rating">Puntuación</string>
+
+
+    <!-- Main -->
+
+    <string name="ExitToast">Saliendo de la app</string>
+    <string name="title_activity_upload">UploadActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <!-- Toasts -->
+
+    <string name="toast_changes_saved">Cambios guardados</string>
+    <string name="toast_saved">Guardado</string>
+    <string name="toast_must_login">Debes loguearte</string>
+    <string name="toast_date_deleted">Fecha borrada</string>
+    <string name="toast_logged">Logueado</string>
+    <string name="toast_note_deleted">Nota borrada</string>
+    <string name="toast_rating_bar">Rating bar necesita ser llenada</string>
+    <string name="toast_registered">Registrado</string>
+    <string name="toast_fields_filled">Todos los campos deben ser completados</string>
+    <string name="toast_need_login">Necesitas loguearte</string>
+
+
+    <!-- Change note -->
+    <string name="change_note">Cambiar contenido de la nota</string>
+    <string name="save_changes">Guardar cambios</string>
+
+    <!-- Ratings -->
+    <string name="submit_rating">Guardar puntuación</string>
+
+    <!-- upload chore -->
+    <string name="chores_name">Nombre de la tarea</string>
+    <string name="chores_desc">Descripción de la tarea</string>
+    <string name="chores_prior">Prioridad de la tarea</string>
+    <string name="save">Guardar</string>
+
+    <!-- upload date -->
+    <string name="date_name">Nombre de la fecha</string>
+    <string name="date_format">dd/mm/aaaa</string>
+
+    <!-- upload note -->
+    <string name="note_title">Titulo de la nota</string>
+    <string name="note_content">Contenido de la nota</string>
+
+    <!-- item layout -->
+    <string name="item_title">Title</string>
+
+    <!-- progress -->
+    <string name="loading">Cargando...</string>
+
+    <!-- about fragment -->
+    <string name="students_name">Estudiante: Antonio Perona Martínez</string>
+    <string name="students_career">Ingeniería Telemática</string>
+    <string name="students_github">Github: aperona2018</string>
+
+
+</resources>

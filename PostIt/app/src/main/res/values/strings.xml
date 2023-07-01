@@ -48,4 +48,52 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+
+    <!-- Toasts -->
+
+    <string name="toast_changes_saved">Changes saved</string>
+    <string name="toast_saved">Saved</string>
+    <string name="toast_must_login">Must login</string>
+    <string name="toast_date_deleted">Date deleted</string>
+    <string name="toast_logged">Logged</string>
+    <string name="toast_note_deleted">Note deleted</string>
+    <string name="toast_rating_bar">Rating bar must be filled</string>
+    <string name="toast_registered">Registered</string>
+    <string name="toast_fields_filled">All fields must be filled</string>
+    <string name="toast_need_login">Need to login</string>
+
+
+    <!-- Change note -->
+    <string name="change_note">Change note content</string>
+    <string name="save_changes">Save changes</string>
+
+    <!-- Ratings -->
+    <string name="submit_rating">Submit rating</string>
+
+    <!-- upload chore -->
+    <string name="chores_name">Enter chores name</string>
+    <string name="chores_desc">Enter chores description</string>
+    <string name="chores_prior">Enter chores priority</string>
+    <string name="save">Save</string>
+
+    <!-- upload date -->
+    <string name="date_name">Enter date name</string>
+    <string name="date_format">dd/mm/yyyy</string>
+
+    <!-- upload note -->
+    <string name="note_title">Enter note title</string>
+    <string name="note_content">Enter note content</string>
+
+    <!-- item layout -->
+    <string name="item_title">Title</string>
+
+    <!-- progress -->
+    <string name="loading">Loading...</string>
+
+    <!-- about fragment -->
+    <string name="students_name">Student: Antonio Perona Martínez</string>
+    <string name="students_career">Telematic Engineering</string>
+    <string name="students_github">Github: aperona2018</string>
+
+
 </resources>

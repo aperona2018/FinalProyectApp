@@ -41,7 +41,7 @@
                 android:layout_marginTop="20dp"
                 android:background="@drawable/border"
                 android:gravity="start|center_vertical"
-                android:hint="Enter chores name"
+                android:hint="@string/chores_name"
                 android:maxLines="1"
                 android:padding="16dp"
                 android:textColor="@color/lavender" />
@@ -53,7 +53,7 @@
                 android:layout_marginTop="20dp"
                 android:background="@drawable/border"
                 android:gravity="start|center_vertical"
-                android:hint="Enter chores description"
+                android:hint="@string/chores_desc"
                 android:padding="16dp"
                 android:textColor="@color/lavender" />
 
@@ -64,7 +64,7 @@
                 android:layout_marginTop="20dp"
                 android:background="@drawable/border"
                 android:gravity="start|center_vertical"
-                android:hint="Enter chores priority"
+                android:hint="@string/chores_prior"
                 android:padding="16dp"
                 android:textColor="@color/lavender" />
 
@@ -73,7 +73,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginTop="20dp"
-                android:text="Save"
+                android:text="@string/save"
                 android:textSize="18sp"
                 app:cornerRadius="20dp" />
 

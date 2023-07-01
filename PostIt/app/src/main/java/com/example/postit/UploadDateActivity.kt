@@ -66,7 +66,7 @@ class UploadDateActivity : AppCompatActivity() {
         FirebaseDatabase.getInstance("https://postit-48c08-default-rtdb.europe-west1.firebasedatabase.app").getReference("Dates").child(username.toString()).child(dateTitle)
             .setValue(dateClass).addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    Toast.makeText(this@UploadDateActivity, "Saved", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@UploadDateActivity, R.string.toast_saved, Toast.LENGTH_SHORT).show()
                     finish()
                 }
             }.addOnFailureListener { e ->

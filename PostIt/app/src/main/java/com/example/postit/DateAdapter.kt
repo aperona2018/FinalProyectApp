@@ -30,7 +30,7 @@ class DateAdapter(private val context: android.content.Context, private var date
             if (title != null) {
                 FirebaseDatabase.getInstance("https://postit-48c08-default-rtdb.europe-west1.firebasedatabase.app").getReference("Dates").child(creator)
                     .child(title).removeValue().addOnSuccessListener {
-                        Toast.makeText(context, "Date deleted", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, R.string.toast_date_deleted, Toast.LENGTH_SHORT).show()
                     }
             }
         }

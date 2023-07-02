@@ -28,6 +28,7 @@ class NoteAdapter(private val context: android.content.Context, private var note
     override fun onBindViewHolder(holder: NoteViewHolder, position: Int) {
         holder.recNoteTitle.text = noteList[position].noteTitle
         val username = noteList[position].noteCreator
+
         holder.recDelete.setOnClickListener {
             val title : String? = noteList[position].noteTitle
             if (title != null) {

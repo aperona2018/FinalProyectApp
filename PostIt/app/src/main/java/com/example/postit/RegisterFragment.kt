@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import com.google.firebase.database.FirebaseDatabase
 
 
@@ -17,6 +18,8 @@ class RegisterFragment : Fragment() {
     lateinit var email : String
     lateinit var number : String
     lateinit var password : String
+
+    private val userViewModel : UserViewModel by activityViewModels()
 
 
     override fun onCreateView(
@@ -40,6 +43,7 @@ class RegisterFragment : Fragment() {
                     .setValue(userClass).addOnCompleteListener { task ->
                         if (task.isSuccessful) {
                             Toast.makeText(activity, R.string.toast_registered, Toast.LENGTH_SHORT).show()
+                            userViewModel.setUsername(username.toString())
                             activity?.supportFragmentManager?.beginTransaction()?.apply{
                                 replace(R.id.fragment_container, HomeFragment())
                                 addToBackStack(null)
@@ -49,15 +53,10 @@ class RegisterFragment : Fragment() {
                     }.addOnFailureListener { e ->
                         Toast.makeText(activity, e.message.toString(), Toast.LENGTH_SHORT).show()
                     }
-
-
-
             } else{
                 Toast.makeText(activity, R.string.toast_fields_filled, Toast.LENGTH_SHORT).show()
             }
         }
-
-
         return view
     }
 

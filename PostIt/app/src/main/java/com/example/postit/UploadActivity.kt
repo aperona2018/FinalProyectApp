@@ -21,7 +21,6 @@ class UploadActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityUploadBinding
     var imageUrl : String? = null
-    var uri: Uri? = null
     private var username : String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,23 +32,6 @@ class UploadActivity : AppCompatActivity() {
         val bundle : Bundle? = this.intent.extras
         username = bundle?.getString("username")
 
-        val activityResultLauncher = registerForActivityResult<Intent, ActivityResult>(
-            ActivityResultContracts.StartActivityForResult()) { result ->
-            if (result.resultCode == RESULT_OK) {
-                val data = result.data
-                uri = data!!.data
-                binding.uploadImage.setImageURI(uri)
-            } else {
-                Toast.makeText(this@UploadActivity, "No Image Selected", Toast.LENGTH_SHORT).show()
-            }
-        }
-
-        binding.uploadImage.setOnClickListener {
-            val photoPicker = Intent(Intent.ACTION_PICK)
-            photoPicker.type = "image/*"
-            activityResultLauncher.launch(photoPicker)
-        }
-
         binding.saveButton.setOnClickListener {
             uploadData()
         }
@@ -60,7 +42,6 @@ class UploadActivity : AppCompatActivity() {
         val desc = binding.choresDesc.text.toString()
         val priority = binding.choresPriority.text.toString()
         val choreClass = ChoreClass(title, desc, priority, imageUrl)
-        //val currentDate = DateFormat.getDateTimeInstance().format(Calendar.getInstance().time)
 
         val builder = AlertDialog.Builder(this@UploadActivity)
         builder.setCancelable(false)

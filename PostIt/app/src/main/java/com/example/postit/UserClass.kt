@@ -15,5 +15,4 @@ class UserClass {
 
     constructor()
 
-
 }

@@ -42,7 +42,6 @@ class LoginFragment : Fragment() {
                         for (user in result){
                             if ((user.userName == username) && (user.userPassword == password)){
                                 userViewModel.setUsername(user.userName.toString())
-                                println("Userviewmodel login: " + userViewModel.username.value)
                                 Toast.makeText(activity, R.string.toast_logged, Toast.LENGTH_SHORT).show()
                                 activity?.supportFragmentManager?.beginTransaction()?.apply{
                                     replace(R.id.fragment_container, HomeFragment())
